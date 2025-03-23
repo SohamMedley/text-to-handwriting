@@ -5,8 +5,9 @@ A modern, premium version of the text-to-handwriting converter with enhanced UI 
 ## Features
 
 - Convert typed text to handwriting
-- Multiple handwriting font options
+- Multiple handwriting font options (10 built-in fonts including Poppins as a humanized font)
 - Custom font upload
+- Font preview section for easy selection
 - Adjustable text properties (size, color, spacing)
 - Different paper backgrounds (ruled, grid, custom)
 - Page effects (shadows, vintage, worn)
@@ -18,6 +19,6 @@ A modern, premium version of the text-to-handwriting converter with enhanced UI 
 1. Clone this repository
 2. Install the required dependencies:
 
-```bash
+\`\`\`bash
 pip install flask
 
