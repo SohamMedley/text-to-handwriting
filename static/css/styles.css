@@ -13,6 +13,16 @@
   --transition: all 0.2s ease;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
     "Helvetica Neue", sans-serif;
+  --font-poppins: "Poppins", var(--font-sans);
+  --font-handwriting-1: "Homemade Apple", cursive;
+  --font-handwriting-2: "Caveat", cursive;
+  --font-handwriting-3: "Indie Flower", cursive;
+  --font-handwriting-4: "Dancing Script", cursive;
+  --font-handwriting-5: "Shadows Into Light", cursive;
+  --font-handwriting-6: "Architects Daughter", cursive;
+  --font-handwriting-7: "Kalam", cursive;
+  --font-handwriting-8: "Satisfy", cursive;
+  --font-handwriting-9: "Pacifico", cursive;
 }
 
 .dark {
@@ -204,6 +214,84 @@ main {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.font-preview-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.font-preview {
+  flex: 1 0 calc(33.333% - 1rem);
+  min-width: 100px;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.font-preview:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.font-preview.active {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.font-preview-homemade-apple {
+  font-family: "Homemade Apple", cursive;
+  font-size: 14px;
+}
+
+.font-preview-caveat {
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+}
+
+.font-preview-indie-flower {
+  font-family: "Indie Flower", cursive;
+  font-size: 16px;
+}
+
+.font-preview-dancing-script {
+  font-family: "Dancing Script", cursive;
+  font-size: 18px;
+}
+
+.font-preview-shadows-into-light {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 16px;
+}
+
+.font-preview-architects-daughter {
+  font-family: "Architects Daughter", cursive;
+  font-size: 16px;
+}
+
+.font-preview-kalam {
+  font-family: "Kalam", cursive;
+  font-size: 16px;
+}
+
+.font-preview-satisfy {
+  font-family: "Satisfy", cursive;
+  font-size: 16px;
+}
+
+.font-preview-pacifico {
+  font-family: "Pacifico", cursive;
+  font-size: 16px;
+}
+
+.font-preview-poppins {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
 }
 
 .option-row label {
