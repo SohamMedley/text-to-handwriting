@@ -47,6 +47,56 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTextInputStyle()
   })
 
+  // Create font previews
+  function createFontPreviews() {
+    const fontPreviewContainer = document.createElement("div")
+    fontPreviewContainer.className = "font-preview-row"
+    fontPreviewContainer.id = "font-preview-container"
+
+    const fonts = [
+      { name: "Homemade Apple", class: "font-preview-homemade-apple", sample: "Handwriting" },
+      { name: "Caveat", class: "font-preview-caveat", sample: "Handwriting" },
+      { name: "Indie Flower", class: "font-preview-indie-flower", sample: "Handwriting" },
+      { name: "Dancing Script", class: "font-preview-dancing-script", sample: "Handwriting" },
+      { name: "Shadows Into Light", class: "font-preview-shadows-into-light", sample: "Handwriting" },
+      { name: "Architects Daughter", class: "font-preview-architects-daughter", sample: "Handwriting" },
+      { name: "Kalam", class: "font-preview-kalam", sample: "Handwriting" },
+      { name: "Satisfy", class: "font-preview-satisfy", sample: "Handwriting" },
+      { name: "Pacifico", class: "font-preview-pacifico", sample: "Handwriting" },
+      { name: "Poppins", class: "font-preview-poppins", sample: "Humanized Text" },
+    ]
+
+    fonts.forEach((font) => {
+      const preview = document.createElement("div")
+      preview.className = "font-preview"
+      preview.dataset.font = font.name
+      preview.innerHTML = `<span class="${font.class}">${font.sample}</span>`
+
+      preview.addEventListener("click", function () {
+        fontFamily.value = font.name
+        document.querySelectorAll(".font-preview").forEach((p) => p.classList.remove("active"))
+        this.classList.add("active")
+        updateTextInputStyle()
+      })
+
+      fontPreviewContainer.appendChild(preview)
+    })
+
+    // Insert after the font family dropdown
+    const fontFamilyRow = fontFamily.closest(".option-row")
+    fontFamilyRow.parentNode.insertBefore(fontPreviewContainer, fontFamilyRow.nextSibling)
+
+    // Set the initial active preview
+    const initialFont = fontFamily.value
+    const initialPreview = document.querySelector(`.font-preview[data-font="${initialFont}"]`)
+    if (initialPreview) {
+      initialPreview.classList.add("active")
+    }
+  }
+
+  // Call the function to create font previews
+  createFontPreviews()
+
   fontSize.addEventListener("input", function () {
     fontSizeValue.textContent = `${this.value}px`
     updateTextInputStyle()
@@ -353,6 +403,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('[data-paper="default"]').classList.add("active")
     currentPaper = "default"
 
+    // Reset font preview selection
+    document.querySelectorAll(".font-preview").forEach((p) => p.classList.remove("active"))
+    const defaultFontPreview = document.querySelector('.font-preview[data-font="Homemade Apple"]')
+    if (defaultFontPreview) {
+      defaultFontPreview.classList.add("active")
+    }
+
     // Hide custom rows
     customFontRow.style.display = "none"
     customPaperRow.style.display = "none"
@@ -400,7 +457,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Add html2canvas library for image generation
 document.addEventListener("DOMContentLoaded", () => {
-  let html2canvasLoaded = false // Declare html2canvasLoaded here
   const script = document.createElement("script")
   script.src = "https://html2canvas.hertzen.com/dist/html2canvas.min.js"
   script.onload = () => {
